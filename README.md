@@ -44,3 +44,48 @@ ios app demonstration      |  server side output
 * ### create 1 UILabel to dispay data from server using Xcode GUI
   * ctrl-drag label to ```ViewController``` class to create an outlet variable
   * label variable with default UILabel settings
+ * ### create new file to store API Functions
+   * ```file``` > ```New File``` > ```Swift File``` > ```APIFunctions```
+   * copy and paste the following code in. Replace the 'X's with the IP address found on your raspberry pi
+   * in line comments explain code
+ ```
+ //
+//  APIFunctions.swift
+//  Connect_To_Server
+//
+//  Created by Matthew Jacobsen on 6/6/21.
+//
+
+import Foundation
+import Alamofire // using Alamofire
+
+class APIFunctions {
+    func ls(completion: @escaping (String) -> Void){ // ls function that will return string upon completion
+        var ls_str: String = "" // string that will hold our data from the request
+        AF.request("http://X.X.X.X:8081/ls").response { response in // Alamofire request to get data in utf-8 form
+            ls_str = String(data: response.data!, encoding: .utf8)!
+            completion(ls_str) // upon completion, return the string
+        }
+    }
+    func cat(file: String, completion: @escaping (String) -> Void){ // cat function that will return string upon completion
+        var cat_str: String = "" // string that will hold our data from the request
+        AF.request("http://X.X.X.X:8081/cat/" + file).response { response in // Alamofire request to get data in utf-8 form
+            cat_str = String(data: response.data!, encoding: .utf8)!
+            completion(cat_str) // upon completion, return the string
+        }
+    }
+    func vim(name: String){ // takes in string of file to create using 'touch'
+        let addr = "http://X.X.X.X:8081/vim/" + name // path of creation
+        AF.request(addr, method: .post).responseJSON { response in // alamofire request to server
+            debugPrint(response) // print response if one
+        }
+    }
+    func append(str: String,file: String){ // takes in string to append and file to append to
+        let parameters = ["str": str, "file": file] // creating parameters to pass in body in request
+        AF.request("http://X.X.X.X:8081/append", method: .post, parameters: parameters).responseJSON { response in
+                                                // using post method, with parameters in JSON form
+            debugPrint(response) // print response if one
+        }
+    }
+}
+```
