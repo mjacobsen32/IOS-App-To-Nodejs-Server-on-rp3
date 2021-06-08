@@ -5,7 +5,7 @@ ios app demonstration      |  server side output
 -------------------------|-------------------------
 <img src="https://github.com/mjacobsen32/IOS-App-To-Nodejs-Server-on-rp3/blob/main/low.gif" width="500" height="800">  |  <img src="https://github.com/mjacobsen32/IOS-App-To-Nodejs-Server-on-rp3/blob/main/med.gif" width="500" height="800">
 
-
+# Implementation and walkthrough:
 ## Server setup:
 * ### Install nodejs on raspberry PI:
   * run ```uname -m``` to get os version
@@ -211,3 +211,9 @@ class APIFunctions {
 }
 ```
 ## We can now run the application with our server running on the same network and everything should work!
+# Applications, usefulness, and limitations:
+Having the ability to connect a mobile device to our home or organizations systems that operate on linux can have provide flexibility, fast action, and ease of use while away from your home system. This application is a proof of concept to show what is possible and how easy it can be to implement if you desire to access work or home machines while on the go. 
+
+There are various possible applications for this kind of implementation if expanded on. A small IT department could make use of this if they are not able to lug around a laptop everywhere they go. If a system crashes, or a machine needs assistence, being able to access that to run simple commands through an Iphone can be very handy. Antother application could be if you had a home system that ran on raspberry pi, such as lighting, cooling, or heating. Being able to change the thermostat, or music from your iphone can be nice that way you do not need to go to your home station for changes. The applications are endless, but the obvious benefit would be to have on the go access to systems and machines when you cannot have access to your computer.
+
+This application also does not take into account security concerns as it is simply a proof of concept and can only run on your local network until later steps are taken to allow outside connection. Extra security measures will need to be addressed when implementing such a server that gives mobile devices access to administrative commands and executable programs and methods. 
