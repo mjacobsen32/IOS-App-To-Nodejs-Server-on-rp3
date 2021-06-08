@@ -88,12 +88,12 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var append_txt: UITextField!
-    @IBAction func append(_ sender: Any) {
-        let append_str: String = append_txt.text!
-        if append_str != "" && recently_created_file != "" {
-            APIFunctions().append(str: append_str, file: recently_created_file)
-            append_txt.text! = ""
+    @IBOutlet weak var append_txt: UITextField! // outlet to our text field on storyboard
+    @IBAction func append(_ sender: Any) { // reference to the button 
+        let append_str: String = append_txt.text! // get string from text field reference
+        if append_str != "" && recently_created_file != "" { // if append string isnt empty and we recently created a file
+            APIFunctions().append(str: append_str, file: recently_created_file) // call API function passing variables
+            append_txt.text! = "" // set field to nothing for ease of use
         }
     }
 }
