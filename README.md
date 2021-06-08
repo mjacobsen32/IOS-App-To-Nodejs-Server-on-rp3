@@ -27,6 +27,10 @@ ios app demonstration      |  server side output
   * run ```ifconfig``` and write down ip address of ```inet``` in ```wlan0```
 * ### Create server.js file
   * ```vim server.js```
+  * copy and paste the following code into your ```server.js```, inline comments explain code 
+```js
+
+```
 * ### Run server
   * ```node server.js```
 
@@ -143,3 +147,4 @@ class APIFunctions {
     }
 }
 ```
+* ### We can now run the application with our server running on the same network and everything should work!
