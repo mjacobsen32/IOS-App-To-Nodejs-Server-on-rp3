@@ -1,5 +1,5 @@
-# IOS_App_To_Node.js
-This is a walkthrough tutorial that connects an IOS application to a node.js server running on a raspberry pi. This tutorial uses node.js, express, Alamofire, and is written in javascript and swift
+# IOS App to Nodejs server - run simple shell commands from iphone!
+This is a walkthrough tutorial that connects an IOS application to a node.js server running on a raspberry pi that allows the user to run 4 simple shell commands in the server folder: ```ls```, ```touch```, ```append``` or ```>>```, and ```cat```. This tutorial uses node.js, express, Alamofire, and is written in javascript and swift
 
 ios app demonstration      |  server side output
 -------------------------|-------------------------
