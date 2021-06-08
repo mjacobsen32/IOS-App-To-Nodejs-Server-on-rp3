@@ -21,6 +21,11 @@ ios app demonstration      |  server side output
   * ```sudo apt-get install npm```
   * see if install worked properly using ```npm --version```
 * ### Setup NPM
+  * in server directory run ```npm init```
+  * install express using ```npm install express```
 * ### Get IP address (will only work on local network)
+  * run ```ifconfig``` and write down ip address of ```inet``` in ```wlan0```
 * ### Create server.js file
+  * ```vim server.js```
 * ### Run server
+  * ```node server.js```
