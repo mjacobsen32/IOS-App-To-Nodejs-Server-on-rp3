@@ -16,7 +16,10 @@ ios app demonstration      |  server side output
   * make dir ```/opt/bin``` using ```sudo mkdir /opt/bin```
   * create symbolic link to all files using ```sudo ln -s /opt/node/bin/* /opt/bin/
   * add ```/opt/bin``` to end of ```PATH``` at ```/etc/profile``` using ```sudo nano /etc/profile```
+  * see if install worked properly using ```node -v``` (might need to reboot)
 * ### Install npm using package installer
+  * ```sudo apt-get install npm```
+  * see if install worked properly using ```npm --version```
 * ### Setup NPM
 * ### Get IP address (will only work on local network)
 * ### Create server.js file
