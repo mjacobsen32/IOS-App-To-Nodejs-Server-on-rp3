@@ -28,35 +28,36 @@ ios app demonstration      |  server side output
 * ### Create server.js file
   * ```vim server.js```
   * copy and paste the following code into your ```server.js```, inline comments explain code 
+  ##### * edit X's to hold your Raspberry pi's wlan0 ipv4 address
 ```js
-const express = require('express')
-const app = express()
-app.use(express.json());
-app.use(express.urlencoded({ extended: true}));
+const express = require('express') // using express
+const app = express()  // app holds our express reference
+app.use(express.json()); // using json
+app.use(express.urlencoded({ extended: true})); // using url encoding
 
-app.get("/ls", function(req,res){
-	console.log("running cmd: ls")
-	const { exec } = require('child_process');
-	exec('ls', (err,stdout,stderr) => {
-		if (err) {
+app.get("/ls", function(req,res){ // upon /ls request
+	console.log("running cmd: ls") // print 
+	const { exec } = require('child_process'); // constant that will hold a child process using execute commmand
+	exec('ls', (err,stdout,stderr) => { // execute ls
+		if (err) { // output any error
 			console.error(err)
-		} else {
+		} else { // log the standard output
 			console.log(`stdout: ${stdout}`);
-			res.send(`${stdout}`);
+			res.send(`${stdout}`); // send response stdout to ios application
 		}
 	});
 })
 
-app.get("/cat/:file", function(req,res){
-	console.log("running cmd: cat")
-	const file = req.params.file
-	const { exec } = require('child_process');
-	exec(`cat ${file}`, (err,stdout,stderr) => {
-		if(err){
+app.get("/cat/:file", function(req,res){ // upone get /cat/:file request
+	console.log("running cmd: cat") // print
+	const file = req.params.file // parse file name from parameter in url
+	const { exec } = require('child_process'); // constant that will hold a child process using execute commmand
+	exec(`cat ${file}`, (err,stdout,stderr) => { // execute cat with variable file name
+		if(err){ 
 			console.log(err)
 		} else {
 			console.log(`stdout: ${stdout}\n`);
-			res.send(`${stdout} `);
+			res.send(`${stdout} `); // send response stdout to ios application
 		}
 	});
 })
@@ -65,7 +66,7 @@ app.post('/vim/:name', (req,res) => {
 	console.log("running cmd: vim")
 	const name = req.params.name
 	console.log("file_name = " + name)
-	const { exec } = require('child_process');
+	const { exec } = require('child_process'); // constant that will hold a child process using execute commmand
 	exec(`touch ${name}` ,(err,stdout,stderr) => {
 		if (err){
 			console.log(err)
@@ -78,7 +79,7 @@ app.post('/vim/:name', (req,res) => {
 app.post('/append', (req,res) => {
 	console.log("running cmd: >> ")
 	var data = req.body
-	const { exec } = require('child_process');
+	const { exec } = require('child_process'); // constant that will hold a child process using execute commmand
 	exec(`echo "${data.str}" >> ${data.file}`, (err,stdout,stderr) => {
 		if (err){
 			console.log(err)
@@ -88,7 +89,7 @@ app.post('/append', (req,res) => {
 	});
 })
 
-var server = app.listen(8081, "10.34.65.49", function(){
+var server = app.listen(8081, "X.X.X.X", function(){ // REPLACE X's WITH 
 	console.log("Server is running!")
 })
 ```
@@ -166,6 +167,7 @@ class ViewController: UIViewController {
 * ### create new file to store API Functions
    * ```file``` > ```New File``` > ```Swift File``` > ```APIFunctions```
    * copy and paste the following code in. Replace the 'X's with the IP address found on your raspberry pi
+   ##### * edit X's to hold your raspberry pi's ipv4 address
    * in line comments explain code
  ```swift
  //
