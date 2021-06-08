@@ -29,3 +29,12 @@ ios app demonstration      |  server side output
   * ```vim server.js```
 * ### Run server
   * ```node server.js```
+
+## ios App setup:
+* ### create blank application
+* ### install AlamoFire dependency
+* ### create 4 ```UIButton```s for each command
+  * ctrl-drag 4 buttons to ```ViewController``` class to create an action function
+  * label buttons with default UIButton settings
+* ### create 2 UITextFields
+* ### create 1 UILabel
