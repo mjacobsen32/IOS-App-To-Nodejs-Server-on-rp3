@@ -13,6 +13,9 @@ ios app demonstration      |  server side output
   * wget copied link in ```server``` directory on rp3
   * unzip file using commmand ```tar -xzf <tar_file_here>```
   * mv file to ```/opt/bin``` using ```sudo mv <unzipped_file_here> /opt/node```
+  * make dir ```/opt/bin``` using ```sudo mkdir /opt/bin```
+  * create symbolic link to all files using ```sudo ln -s /opt/node/bin/* /opt/bin/
+  * add ```/opt/bin``` to end of ```PATH``` at ```/etc/profile``` using ```sudo nano /etc/profile```
 * ### Install npm using package installer
 * ### Setup NPM
 * ### Get IP address (will only work on local network)
