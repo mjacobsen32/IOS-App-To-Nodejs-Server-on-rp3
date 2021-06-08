@@ -33,8 +33,12 @@ ios app demonstration      |  server side output
 ## ios App setup:
 * ### create blank application
 * ### install AlamoFire dependency
-* ### create 4 ```UIButton```s for each command
+* ### create 4 UIButton's for each command (ls, cat, append, touch) using Xcode GUI
   * ctrl-drag 4 buttons to ```ViewController``` class to create an action function
   * label buttons with default UIButton settings
-* ### create 2 UITextFields
-* ### create 1 UILabel
+* ### create 2 UITextFields for file name and append string using Xcode GUI
+  * ctrl-drag 2 buttons to ```ViewController``` class to create an outlet variable
+  * label variable with default UITextField settings
+* ### create 1 UILabel to dispay data from server using Xcode GUI
+  * ctrl-drag label to ```ViewController``` class to create an outlet variable
+  * label variable with default UILabel settings
