@@ -32,7 +32,9 @@ ios app demonstration      |  server side output
 
 ## ios App setup:
 * ### create blank application
+  * default simple app with Storyboard and without CoreData (Apples database)
 * ### install AlamoFire dependency
+  * ```file``` > ```Swift Packages``` > ```Add Package Dependency``` > https://github.com/Alamofire/Alamofire
 * ### create 4 UIButton's for each command (ls, cat, append, touch) using Xcode GUI
   * ctrl-drag 4 buttons to ```ViewController``` class to create an action function
   * label buttons with default UIButton settings
