@@ -28,7 +28,7 @@ ios app demonstration      |  server side output
 * ### Create server.js file
   * ```vim server.js```
   * copy and paste the following code into your ```server.js```, inline comments explain code 
-  ##### * edit X's to hold your Raspberry pi's wlan0 ipv4 address
+  * **edit X's to hold your Raspberry pi's wlan0 ipv4 address**
 ```js
 const express = require('express') // using express
 const app = express()  // app holds our express reference
@@ -62,12 +62,12 @@ app.get("/cat/:file", function(req,res){ // upone get /cat/:file request
 	});
 })
 
-app.post('/vim/:name', (req,res) => {
-	console.log("running cmd: vim")
-	const name = req.params.name
-	console.log("file_name = " + name)
+app.post('/vim/:name', (req,res) => { // post method touch path (named vim currently)
+	console.log("running cmd: vim") // touch
+	const name = req.params.name // get name of file from params
+	console.log("file_name = " + name) 
 	const { exec } = require('child_process'); // constant that will hold a child process using execute commmand
-	exec(`touch ${name}` ,(err,stdout,stderr) => {
+	exec(`touch ${name}` ,(err,stdout,stderr) => { // execute touch command with variable file name
 		if (err){
 			console.log(err)
 		} else {
@@ -76,11 +76,11 @@ app.post('/vim/:name', (req,res) => {
 	});
 })
 
-app.post('/append', (req,res) => {
-	console.log("running cmd: >> ")
-	var data = req.body
+app.post('/append', (req,res) => {  //post method append
+	console.log("running cmd: >> ") 
+	var data = req.body // get parameters from the request body
 	const { exec } = require('child_process'); // constant that will hold a child process using execute commmand
-	exec(`echo "${data.str}" >> ${data.file}`, (err,stdout,stderr) => {
+	exec(`echo "${data.str}" >> ${data.file}`, (err,stdout,stderr) => { // execute (needs echo to concatenate into file)
 		if (err){
 			console.log(err)
 		} else {
@@ -89,8 +89,8 @@ app.post('/append', (req,res) => {
 	});
 })
 
-var server = app.listen(8081, "X.X.X.X", function(){ // REPLACE X's WITH 
-	console.log("Server is running!")
+var server = app.listen(8081, "X.X.X.X", function(){ // Replace X's with your Raspberry pi's ipv4 address, port 8081 likely will work fine
+	console.log("Server is running!") // output we are running with no errors
 })
 ```
 * ### Run server
@@ -167,7 +167,7 @@ class ViewController: UIViewController {
 * ### create new file to store API Functions
    * ```file``` > ```New File``` > ```Swift File``` > ```APIFunctions```
    * copy and paste the following code in. Replace the 'X's with the IP address found on your raspberry pi
-   ##### * edit X's to hold your raspberry pi's ipv4 address
+   * **edit X's to hold your raspberry pi's ipv4 address**
    * in line comments explain code
  ```swift
  //
