@@ -44,11 +44,65 @@ ios app demonstration      |  server side output
 * ### create 1 UILabel to dispay data from server using Xcode GUI
   * ctrl-drag label to ```ViewController``` class to create an outlet variable
   * label variable with default UILabel settings
- * ### create new file to store API Functions
+* ### ViewController.swift should now look something like this
+```swift
+//
+//  ViewController.swift
+//  Connect_To_Server
+//
+//  Created by Matthew Jacobsen on 6/6/21.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    var recently_created_file = ""  // stores our most recently created file
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+    
+    @IBOutlet weak var ls: UILabel!  // reference to our label to hold return value from post request
+    
+    @IBAction func call_ls(_ sender: Any) { // reference to ls button
+        APIFunctions().ls { txt in // call our APIFunction ls() that waits on txt as return
+            self.ls.text = txt  // gives string to our ls label
+        }
+    }
+    
+    @IBAction func cat(_ sender: Any) { // reference to cat button
+        APIFunctions().cat(file: recently_created_file) { txt in // waits for return value of txt from post request
+            self.ls.text = txt // gives string to our ls label
+        }
+    }
+    
+    @IBOutlet weak var text_box_name: UITextField! // reference to text field to hold touch file name
+    @IBAction func call_vim(_ sender: Any) { // reference to our button to touch the file (create new file)
+        let name_str: String = text_box_name.text! // get string for file name from the reference outlet
+        recently_created_file = text_box_name.text! // set the most recently created file name to the string
+        if name_str != "" { // if there is something in the field
+            APIFunctions().vim(name: name_str) // pass name of new file to our APIFunction
+            text_box_name.text! = "" // set the text field to nothing for ease of use
+        }
+    }
+    
+    @IBOutlet weak var append_txt: UITextField!
+    @IBAction func append(_ sender: Any) {
+        let append_str: String = append_txt.text!
+        if append_str != "" && recently_created_file != "" {
+            APIFunctions().append(str: append_str, file: recently_created_file)
+            append_txt.text! = ""
+        }
+    }
+}
+```
+* ### create new file to store API Functions
    * ```file``` > ```New File``` > ```Swift File``` > ```APIFunctions```
    * copy and paste the following code in. Replace the 'X's with the IP address found on your raspberry pi
    * in line comments explain code
- ```
+ ```swift
  //
 //  APIFunctions.swift
 //  Connect_To_Server
